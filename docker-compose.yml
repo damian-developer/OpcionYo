@@ -1,0 +1,45 @@
+services:
+  app:
+    build: .
+    container_name: opcionyo-app
+    restart: always
+    working_dir: /var/www/html
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - db
+    networks:
+      - opcionyo-network
+
+  nginx:
+    image: nginx:alpine
+    container_name: opcionyo-nginx
+    restart: always
+    ports:
+      - "8025:80"
+    volumes:
+      - .:/var/www/html
+      - ./docker-compose/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - app
+    networks:
+      - opcionyo-network
+
+  db:
+    image: mysql:8.0
+    container_name: opcionyo-db
+    restart: always
+    environment:
+      MYSQL_DATABASE: $DB_DATABASE
+      MYSQL_ROOT_PASSWORD: $DB_PASSWORD
+    ports:
+      - "3320:3306"
+    volumes:
+      - ./docker-compose/mysql:/var/lib/mysql
+    networks:
+      - opcionyo-network
+
+
+networks:
+  opcionyo-network:
+    driver: bridge
