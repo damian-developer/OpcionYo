@@ -43,7 +43,7 @@ class EmailForAnAppointment extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.emails.EmailForAnAppointment',
+            view: 'emails.EmailForAnAppointment',
         );
     }
 

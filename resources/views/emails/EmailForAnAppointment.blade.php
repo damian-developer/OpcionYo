@@ -9,7 +9,7 @@
 <body>
     <h1>New Appointment</h1>
     <p>Doctor: {{ $appointment->doctor->name }}</p>
-    <p>Patient: {{ $appointment->patient->name }}</p>
+    <p>Patient: </p>
     <p>Date: {{ $appointment->date }}</p>
     <p>Hour: {{ $appointment->start }} - {{ $appointment->end }}</p>
 </body>

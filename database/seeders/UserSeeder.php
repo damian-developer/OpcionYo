@@ -74,7 +74,7 @@ class UserSeeder extends Seeder
                 'user_id' => 3,
                 'specialty_id' => 3,
                 'country' => fake()->country(),
-                'timezone' => 'America/Colombia',
+                'timezone' => 'America/Caracas',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]
